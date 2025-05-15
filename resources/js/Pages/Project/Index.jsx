@@ -129,7 +129,7 @@ export default function Index({ projects, queryParams = null }) {
                                             <TableHeading sortable={false}>
                                                 Created By
                                             </TableHeading>
-                                            
+
                                             <th className="px-3 py-2 text-right">
                                                 Actions
                                             </th>
@@ -206,8 +206,15 @@ export default function Index({ projects, queryParams = null }) {
                                                         style={{ width: 60 }}
                                                     />
                                                 </td>
-                                                <td className="px-3 py-2">
-                                                    {project.name}
+                                                <td className="px-3 py-2 text-nowrap hover:text-gray-100 hover:underline">
+                                                    <Link
+                                                        href={route(
+                                                            "project.show",
+                                                            project.id
+                                                        )}
+                                                    >
+                                                        {project.name}
+                                                    </Link>
                                                 </td>
                                                 <td className="px-3 py-2">
                                                     <span
