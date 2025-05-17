@@ -10,6 +10,8 @@ use App\Http\Resources\TaskResource;
 use App\Http\Resources\UserResource;
 use App\Models\Project;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class TaskController extends Controller
 {
@@ -59,7 +61,16 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        //
+        $data = $request->validated();
+        $image = $data["image_path"] ?? null;
+        $data["created_by"] = Auth::id();
+        $data["updated_by"] = Auth::id();
+        if ($image) {
+            $data["image_path"] = $image->store("task/" . Str::random(), "public");
+        }
+
+        Task::create($data);
+        return to_route("task.index")->with("success", 'Task was created!');
     }
 
     /**
