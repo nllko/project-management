@@ -21,23 +21,10 @@ class ProjectFactory extends Factory
             'description' => fake()->realText(),
             'due_date' => fake()->dateTimeBetween('now', '+1 year'),
             'status' => fake()->randomElement(['pending', 'in_progress', 'completed']),
-            'image_path' => $this->createImagePath("600","400"),
             'created_by' => 1,
             'updated_by' => 1,
             'created_at' => time(),
             'updated_at' => time(),
         ];
-    }
-
-    private function createImagePath($x, $y): string
-    {
-        $word = fake()->word();
-        $color1 = fake()->hexColor();
-        $color2 = fake()->hexColor();
-
-        $color1  = ltrim($color1, "#");
-        $color2  = ltrim($color2, "#");
-
-        return "https://placehold.co/{$x}x{$y}/{$color1}/{$color2}?text={$word}";
     }
 }
