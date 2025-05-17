@@ -5,10 +5,9 @@ import {
     TASK_STATUS_TEXT_MAP,
 } from "@/constants";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
-import TasksTable from "../Task/TasksTable";
+import { Head, Link } from "@inertiajs/react";
 
-export default function Show({ task, tasks, queryParams = null }) {
+export default function Show({ task }) {
     return (
         <AuthenticatedLayout
             header={
@@ -119,6 +118,30 @@ export default function Show({ task, tasks, queryParams = null }) {
                                             </label>
                                             <p className="mt-1">
                                                 {task.updatedBy.name}
+                                            </p>
+                                        </div>
+                                        <div className="mt-4">
+                                            <label className="font-bold text-lg">
+                                                Project
+                                            </label>
+                                            <p className="mt-1">
+                                                <Link
+                                                    href={route(
+                                                        "project.show",
+                                                        task.project.id
+                                                    )}
+                                                    className="hover:underline"
+                                                >
+                                                    {task.project.name}
+                                                </Link>
+                                            </p>
+                                        </div>
+                                        <div className="mt-4">
+                                            <label className="font-bold text-lg">
+                                                Assigned User
+                                            </label>
+                                            <p className="mt-1">
+                                                {task.assignedUser.name}
                                             </p>
                                         </div>
                                     </div>
