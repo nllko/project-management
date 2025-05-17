@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Enums\Status;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\File;
 
 class StoreProjectRequest extends FormRequest
 {
@@ -27,7 +28,7 @@ class StoreProjectRequest extends FormRequest
             "name" => ["required", "max:255"],
             "description" => ["nullable", "string"],
             "status" => ["required", Rule::enum(Status::class)],
-            "image_path" => ["nullable", "string"],
+            "image_path" => ["nullable", File::image()],
             "due_date" => ["nullable", "date", Rule::date()->after(today())]
         ];
     }

@@ -133,16 +133,16 @@ export default function Create() {
                                 />
                                 <TextInput
                                     id="project_image_path"
-                                    type="text"
+                                    type="file"
                                     name="image_path"
                                     className="mt-1 block w-full"
                                     value={data.image_path}
                                     onChange={(e) =>
-                                        setData("image_path", e.target.value)
+                                        setData("image_path", e.target.files[0])
                                     }
                                 />
                                 <InputError
-                                    message={errors.image}
+                                    message={errors.image_path}
                                     className="mt-2"
                                 />
                             </div>
