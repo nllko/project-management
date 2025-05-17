@@ -6,7 +6,7 @@ import TextInput from "@/Components/TextInput";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
 
-export default function Create() {
+export default function Create({ projects, users }) {
     const { data, setData, post, errors, reset } = useForm({
         name: "",
         description: "",
@@ -52,7 +52,14 @@ export default function Create() {
                                     }
                                 >
                                     <option value="">Select Project ID</option>
-                                    <option value="">TODO</option>
+                                    {projects.data.map((project) => (
+                                        <option
+                                            value={project.id}
+                                            key={project.id}
+                                        >
+                                            {project.name}
+                                        </option>
+                                    ))}
                                 </SelectInput>
                                 <InputError
                                     message={errors.project_id}
@@ -168,7 +175,11 @@ export default function Create() {
                                     }
                                 >
                                     <option value="">Select User</option>
-                                    <option value="">TODO</option>
+                                    {users.data.map((user) => (
+                                        <option value={user.id} key={user.id}>
+                                            {user.name}
+                                        </option>
+                                    ))}
                                 </SelectInput>
                                 <InputError
                                     message={errors.assigned_user_id}
