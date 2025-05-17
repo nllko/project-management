@@ -179,7 +179,7 @@ export default function Index({ projects, queryParams = null, success }) {
                                             </th>
                                             <th className="px-3 py-2">
                                                 <SelectInput
-                                                    className="w-full"
+                                                    className="w-fit"
                                                     defaultValue={
                                                         queryParams.status
                                                     }
@@ -272,7 +272,11 @@ export default function Index({ projects, queryParams = null, success }) {
                                                         Edit
                                                     </Link>
                                                     <button
-                                                        onClick={(e) => deleteProject(project)}
+                                                        onClick={(e) =>
+                                                            deleteProject(
+                                                                project
+                                                            )
+                                                        }
                                                         className="font-medium text-red-600 dark:text-red-500 hover:underline mx-1"
                                                     >
                                                         Delete

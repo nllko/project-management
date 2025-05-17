@@ -150,7 +150,7 @@ export default function TasksTable({
                             </th>
                             <th className="px-3 py-2">
                                 <SelectInput
-                                    className="w-full"
+                                    className="w-fit"
                                     defaultValue={queryParams.status}
                                     onChange={(e) =>
                                         searchFieldChanged(
@@ -169,7 +169,7 @@ export default function TasksTable({
                             </th>
                             <th className="px-3 py-2">
                                 <SelectInput
-                                    className="w-full"
+                                    className="w-fit"
                                     defaultValue={queryParams.priority}
                                     onChange={(e) =>
                                         searchFieldChanged(
