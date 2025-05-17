@@ -45,4 +45,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function completedTaskCount()
+    {
+        return $this->hasMany(Task::class, "assigned_user_id")->where("status", "completed")->count();
+    }
+
+    public function taskCount()
+    {
+        return $this->hasMany(Task::class, "assigned_user_id")->count();
+    }
 }

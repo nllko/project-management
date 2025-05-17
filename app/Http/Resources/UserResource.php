@@ -19,6 +19,9 @@ class UserResource extends JsonResource
             "id" => $this->id,
             "name"=> $this->name,
             "email"=> $this->email,
+            "created_at" => (new Carbon($this->created_at))->format("d-m-Y"),
+            "completed_task_count" => $this->completedTaskCount(),
+            "assigned_task_count" => $this->taskCount(),
         ];
     }
 }
