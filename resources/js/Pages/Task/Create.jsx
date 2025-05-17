@@ -218,7 +218,6 @@ export default function Create({ projects, users }) {
                                     type="file"
                                     name="image_path"
                                     className="mt-1 block w-full"
-                                    value={data.image_path}
                                     onChange={(e) =>
                                         setData("image_path", e.target.files[0])
                                     }
